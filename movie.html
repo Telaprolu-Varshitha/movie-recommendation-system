@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Recommendation System</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+}
+
+h1{
+    font-size: 40px;
+}
+
+button{
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.action{background-color:#e74c3c;}
+.comedy{background-color:#f1c40f; color:black;}
+.drama{background-color:#9b59b6;}
+.scifi{background-color:#3498db;}
+.horror{background-color:#2c3e50;}
+.romance{background-color:#e91e63;}
+.animation{background-color:#1abc9c;}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+#result{
+    margin-top: 30px;
+    font-size: 24px;
+    background:white;
+    color:black;
+    display:inline-block;
+    padding:15px;
+    border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎬 Movie Recommendation System</h1>
+
+<p>Select your favorite genre</p>
+
+<button class="action" onclick="recommend('Action')">Action</button>
+<button class="comedy" onclick="recommend('Comedy')">Comedy</button>
+<button class="drama" onclick="recommend('Drama')">Drama</button>
+<button class="scifi" onclick="recommend('SciFi')">Sci-Fi</button>
+<button class="horror" onclick="recommend('Horror')">Horror</button>
+<button class="romance" onclick="recommend('Romance')">Romance</button>
+<button class="animation" onclick="recommend('Animation')">Animation</button>
+
+<div id="result"></div>
+
+<script>
+
+function recommend(genre){
+
+var movies={
+Action:["Avengers","John Wick","Mad Max","Gladiator"],
+Comedy:["The Mask","Superbad","Hangover","Rush Hour"],
+Drama:["Forrest Gump","Fight Club","Shawshank Redemption","The Godfather"],
+SciFi:["Interstellar","Inception","Matrix","Avatar"],
+Horror:["The Conjuring","It","Insidious","The Nun"],
+Romance:["Titanic","La La Land","The Notebook","Pride & Prejudice"],
+Animation:["Frozen","Toy Story","Lion King","Coco"]
+};
+
+var movieList = movies[genre];
+
+var recommendations = "";
+
+for(let i=0;i<3;i++){
+    var randomMovie = movieList[Math.floor(Math.random()*movieList.length)];
+    recommendations += "<li>"+randomMovie+"</li>";
+}
+
+document.getElementById("result").innerHTML =
+"<h3>Recommended Movies:</h3><ul>"+recommendations+"</ul>";
+
+
+}
+
+</script>
+
+</body>
+</html>
